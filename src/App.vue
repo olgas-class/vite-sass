@@ -1,31 +1,126 @@
-<script setup>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import HelloWorld from './components/HelloWorld.vue'
+<script>
+export default {
+
+}
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <h1>La mia app</h1>
+
+  <section class="main-section">
+    <h2>Titolo main</h2>
+    <div class="secondary-title">
+      Titolo secondario
+      <h2>Paragrafo</h2>
+    </div>
+  </section>
+
+  <section>
+    <h2>Altro titolo</h2>
+    <a href="" class="link">Link</a>
+
+    <button class="btn btn-primary">My button</button>
+  </section>
+  <section class="large-section">
+    <h2>Titolo della sezione centrato</h2>
+  </section>
+
+  <section class="cards">
+    <div class="card">
+      <h2>Mia card</h2>
+    </div>
+    <div class="card">
+      <h2>Mia card</h2>
+    </div>
+    <div class="card">
+      <h2>Mia card</h2>
+    </div>
+  </section>
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
+<style lang="scss">
+@use "./style/general.scss" as *;
+@use "./style/partials/variables" as *;
+@use "./style/partials/mixins" as *;
+// .main-section {
+//   background-color: yellow;
+// }
+// 
+// .main-section h2 {
+//   color: red;
+// }
+
+.main-section {
+  background-color: yellow;
+
+  h2 {
+    color: red;
+  }
+
+  .secondary-title {
+    font-size: 2rem;
+
+    p {
+      color: green;
+    }
+  }
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+
+// .link {
+//   color: orange;
+// }
+// 
+// .link:hover {
+//   color: green;
+// }
+
+.link {
+  color: orange;
+
+  &:hover {
+    color: green;
+  }
 }
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+
+.btn {
+  border-radius: 10px;
+  padding: .5rem 1rem;
+
+  &-primary {
+    background-color: $primary-color;
+  }
+
+  &-secondary {}
+}
+
+.large-section {
+
+  position: relative;
+  height: 50vh;
+  background-color: lightblue;
+
+  @include respond('md') {
+    background-color: lightgreen;
+  }
+
+  h2 {
+    color: blueviolet;
+    @include abs-center();
+  }
+}
+
+.cards {
+  @include flex(row, space-between, center);
+
+  .card {
+    position: relative;
+    width: 30%;
+    height: 200px;
+    background-color: pink;
+
+    h2 {
+      @include abs-center();
+    }
+  }
 }
 </style>
